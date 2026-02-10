@@ -1,0 +1,16 @@
+# Ignorer les données lourdes
+data/
+output/
+
+# Ignorer les fichiers temporaires Python
+__pycache__/
+*.pyc
+
+# Ignorer les fichiers système (Mac/Windows)
+.DS_Store
+Thumbs.db
+
+# Ignorer l'environnement virtuel (si tu en utilises un)
+venv/
+env/
+.env
