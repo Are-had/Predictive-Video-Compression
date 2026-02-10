@@ -1,5 +1,6 @@
 import cv2
 import numpy as np
+import math 
 
 def draw_motion_vectors(frame, vectors, color=(0, 255, 0)):
     """
@@ -26,3 +27,23 @@ def draw_motion_vectors(frame, vectors, color=(0, 255, 0)):
 
 
     return output_frame
+
+
+
+
+def calculate_psnr(original, reconstructed):
+    """
+    Computes the Peak Signal-to-Noise Ratio (PSNR).
+    Used to quantify reconstruction quality in dB.
+    """
+    # Mean Squared Error
+    mse = np.mean((original.astype(np.float64) - reconstructed.astype(np.float64)) ** 2)
+    
+    # If perfect match
+    if mse == 0:
+        return float('inf')
+    
+    max_pixel = 255.0
+    psnr = 20 * math.log10(max_pixel / math.sqrt(mse))
+    
+    return psnr
